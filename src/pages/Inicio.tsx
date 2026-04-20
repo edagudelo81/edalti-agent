@@ -1,17 +1,35 @@
 import { Link } from "react-router-dom";
 import {
   MessageCircle, Calendar, Clock, Bot, BellRing, Users, ShieldCheck,
-  ArrowRight, Sparkles, Check, Zap, BarChart3, ChevronDown,
+  ArrowRight, Sparkles, Check, ChevronDown, MailQuestion, PhoneCall, CalendarX,
 } from "lucide-react";
 import { useState } from "react";
 import SiteLayout from "@/components/site/SiteLayout";
 import WhatsAppMockup from "@/components/site/WhatsAppMockup";
 
 const stats = [
-  { value: "24/7", label: "Atención sin descanso" },
-  { value: "<3s", label: "Tiempo de respuesta" },
-  { value: "+85%", label: "Reducción de no-shows" },
-  { value: "100%", label: "WhatsApp oficial" },
+  { value: "92%", label: "automatizado" },
+  { value: "100%", label: "atendido" },
+  { value: "48h", label: "Activo en 48 horas" },
+  { value: "0", label: "Sin conocimientos técnicos" },
+];
+
+const problems = [
+  {
+    icon: MailQuestion,
+    title: "Pacientes sin respuesta",
+    desc: "Tu WhatsApp no puede atender a las 2am. El paciente escribe, no obtiene respuesta y llama a otra clínica.",
+  },
+  {
+    icon: PhoneCall,
+    title: "Confirmaciones manuales",
+    desc: "Horas al día llamando para confirmar citas que igual no se cumplen. Tiempo que debería ir a tus pacientes.",
+  },
+  {
+    icon: CalendarX,
+    title: "Ausentismo sin aviso",
+    desc: "El paciente simplemente no llegó. Tu agenda tiene huecos vacíos que cuestan dinero real.",
+  },
 ];
 
 const features = [
@@ -37,8 +55,8 @@ const features = [
   },
   {
     icon: Users,
-    title: "Multiagente",
-    desc: "Atiende cientos de conversaciones simultáneas sin perder calidad en ninguna.",
+    title: "AI + humano: lo mejor de los dos mundos",
+    desc: "El 92% de las citas se gestionan solas. Cuando el paciente lo necesita, el agente transfiere la conversación a tu equipo con todo el contexto ya visible — el humano continúa donde el AI paró, sin que el paciente tenga que repetir nada.",
   },
   {
     icon: ShieldCheck,
@@ -66,8 +84,10 @@ const steps = [
 ];
 
 const industries = [
-  "Clínicas dentales", "Estéticas y spas", "Barberías", "Consultorios médicos",
-  "Veterinarias", "Talleres mecánicos", "Inmobiliarias", "Estudios fotográficos",
+  "Consultorios médicos",
+  "Centros de estética y spa",
+  "Clínicas dentales",
+  "Salones y barberías",
 ];
 
 const testimonials = [
@@ -125,13 +145,13 @@ const Inicio = () => {
               Nuevo • IA conversacional para PyMEs en Colombia
             </span>
             <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight">
-              Agenda citas por WhatsApp{" "}
-              <span className="text-primary">automáticamente</span>,{" "}
-              24 horas al día.
+              <span className="text-foreground">Tu agenda se llena sola.</span>
+              <span className="block mt-3 text-accent">
+                Tu agente de IA responde, agenda y recuerda por WhatsApp, las 24 horas.
+              </span>
             </h1>
             <p className="mt-6 text-lg text-body leading-relaxed max-w-xl">
-              Nuestro Agente IA recibe, agenda y recuerda citas en WhatsApp por ti.
-              Sin contratar más personal, sin perder un solo cliente.
+              Especializado para consultorios médicos, centros de estética, clínicas dentales y salones de belleza en Colombia. Sin conocimientos técnicos — nosotros configuramos todo en 48 horas.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
               <a
@@ -182,55 +202,31 @@ const Inicio = () => {
         </div>
       </section>
 
-      {/* PROBLEM / SOLUTION */}
+      {/* PROBLEM */}
       <section className="py-20 lg:py-28">
-        <div className="container-edalti grid lg:grid-cols-2 gap-12 items-center">
-          <div>
+        <div className="container-edalti">
+          <div className="max-w-2xl mx-auto text-center">
             <span className="text-sm font-semibold text-primary uppercase tracking-wider">El problema</span>
             <h2 className="mt-3 text-3xl lg:text-4xl font-bold leading-tight">
-              Cada mensaje sin responder es un cliente que se va a tu competencia.
+              ¿Cuántas citas estás perdiendo hoy?
             </h2>
             <p className="mt-5 text-body leading-relaxed">
-              Las PyMEs colombianas pierden hasta el <strong>40% de sus prospectos</strong> por no responder
-              en los primeros 5 minutos. Tu equipo no puede atender WhatsApp a las 10pm, los domingos,
-              ni mientras trabajan. Pero tu cliente espera respuesta inmediata.
+              Cada WhatsApp sin responder es una cita — y un ingreso — que se va a la competencia.
             </p>
-            <ul className="mt-6 space-y-3">
-              {[
-                "Mensajes acumulados sin responder",
-                "Citas dobles y choques de horario",
-                "Olvidos y 'no-shows' sin recordatorio",
-                "Un equipo agotado de copiar/pegar respuestas",
-              ].map((p) => (
-                <li key={p} className="flex items-start gap-3 text-body">
-                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-destructive shrink-0" />
-                  {p}
-                </li>
-              ))}
-            </ul>
           </div>
-          <div className="bg-secondary rounded-3xl p-8 lg:p-10 border border-border">
-            <span className="text-sm font-semibold text-primary uppercase tracking-wider">La solución</span>
-            <h3 className="mt-3 text-2xl lg:text-3xl font-bold">Un agente IA que nunca duerme.</h3>
-            <p className="mt-4 text-body leading-relaxed">
-              Responde en segundos, agenda directo en tu calendario, confirma asistencia y
-              libera a tu equipo para que atienda lo que realmente importa: a tus clientes presentes.
-            </p>
-            <div className="mt-8 grid grid-cols-2 gap-4">
-              {[
-                { icon: Zap, label: "3s de respuesta" },
-                { icon: Calendar, label: "Agenda automática" },
-                { icon: BellRing, label: "Recordatorios" },
-                { icon: BarChart3, label: "Reportes claros" },
-              ].map(({ icon: Icon, label }) => (
-                <div key={label} className="bg-background rounded-xl p-4 flex items-center gap-3 shadow-soft">
-                  <div className="h-9 w-9 rounded-lg bg-primary/10 flex items-center justify-center">
-                    <Icon className="h-4.5 w-4.5 text-primary" />
-                  </div>
-                  <span className="text-sm font-medium">{label}</span>
+          <div className="mt-14 grid md:grid-cols-3 gap-5 lg:gap-6">
+            {problems.map((p) => (
+              <div
+                key={p.title}
+                className="bg-background rounded-2xl p-7 lg:p-8 border border-border shadow-card hover:border-primary/30 hover:-translate-y-0.5 transition-all"
+              >
+                <div className="h-14 w-14 rounded-2xl bg-primary/10 flex items-center justify-center">
+                  <p.icon className="h-7 w-7 text-primary" />
                 </div>
-              ))}
-            </div>
+                <h3 className="mt-6 text-xl font-bold">{p.title}</h3>
+                <p className="mt-3 text-body text-sm leading-relaxed">{p.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

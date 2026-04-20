@@ -15,7 +15,7 @@ type Plan = {
 
 const plans: Plan[] = [
   {
-    name: "Starter",
+    name: "Esencial",
     tagline: "Para negocios pequeños empezando con automatización",
     price: 149000,
     features: [
@@ -26,11 +26,11 @@ const plans: Plan[] = [
       "Recordatorios automáticos",
       "Soporte por email",
     ],
-    cta: "Empezar con Starter",
-    ctaHref: "https://wa.me/573000000000?text=Hola%20Edalti%2C%20quiero%20el%20plan%20Starter",
+    cta: "Empezar con Esencial",
+    ctaHref: "https://wa.me/573000000000?text=Hola%20Edalti%2C%20quiero%20el%20plan%20Esencial",
   },
   {
-    name: "Pro",
+    name: "Profesional",
     tagline: "Lo más elegido por PyMEs en crecimiento",
     price: 349000,
     highlight: true,
@@ -44,11 +44,11 @@ const plans: Plan[] = [
       "Integración con Google Calendar / Calendly",
       "Soporte prioritario por WhatsApp",
     ],
-    cta: "Empezar con Pro",
-    ctaHref: "https://wa.me/573000000000?text=Hola%20Edalti%2C%20quiero%20el%20plan%20Pro",
+    cta: "Empezar con Profesional",
+    ctaHref: "https://wa.me/573000000000?text=Hola%20Edalti%2C%20quiero%20el%20plan%20Profesional",
   },
   {
-    name: "Business",
+    name: "Empresarial",
     tagline: "Para empresas con alto volumen y múltiples sedes",
     price: 799000,
     features: [
@@ -62,7 +62,7 @@ const plans: Plan[] = [
       "Soporte 24/7 con SLA",
     ],
     cta: "Hablar con ventas",
-    ctaHref: "https://wa.me/573000000000?text=Hola%20Edalti%2C%20me%20interesa%20el%20plan%20Business",
+    ctaHref: "https://wa.me/573000000000?text=Hola%20Edalti%2C%20me%20interesa%20el%20plan%20Empresarial",
   },
 ];
 
