@@ -78,12 +78,6 @@ const Navbar = () => {
           >
             Ingresar
           </a>
-          <Link
-            to="/precios"
-            className="text-sm font-medium text-foreground hover:text-primary transition-colors"
-          >
-            Ver precios
-          </Link>
           <a
             href="https://wa.me/573000000000?text=Hola%20Edalti%2C%20quiero%20una%20demo%20del%20agente%20IA"
             target="_blank"
