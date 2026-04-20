@@ -20,8 +20,8 @@ const Footer = () => {
             <span className="inline-flex items-center gap-2">
               <MapPin className="h-4 w-4" /> Colombia 🇨🇴
             </span>
-            <a href="mailto:hola@edalti.co" className="inline-flex items-center gap-2 hover:text-accent transition-colors">
-              <Mail className="h-4 w-4" /> hola@edalti.co
+            <a href="mailto:hola@edalti.com" className="inline-flex items-center gap-2 hover:text-accent transition-colors">
+              <Mail className="h-4 w-4" /> hola@edalti.com
             </a>
             <a
               href="https://wa.me/573000000000"
@@ -47,9 +47,16 @@ const Footer = () => {
         <div>
           <h4 className="text-sm font-semibold mb-4 text-background">Empresa</h4>
           <ul className="space-y-3 text-sm text-background/70">
-            <li><a href="#" className="hover:text-accent transition-colors">Sobre nosotros</a></li>
-            <li><a href="#" className="hover:text-accent transition-colors">Casos de éxito</a></li>
-            <li><a href="#" className="hover:text-accent transition-colors">Contacto</a></li>
+            <li>
+              <a
+                href="https://wa.me/573000000000"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-accent transition-colors"
+              >
+                Contacto
+              </a>
+            </li>
           </ul>
         </div>
       </div>

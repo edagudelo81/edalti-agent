@@ -2,9 +2,14 @@ import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, X, MessageCircle } from "lucide-react";
 
-const navLinks = [
+type NavItem =
+  | { to: string; label: string; href?: undefined }
+  | { href: string; label: string; to?: undefined };
+
+const navLinks: NavItem[] = [
   { to: "/inicio", label: "Inicio" },
   { to: "/precios", label: "Precios" },
+  { href: "#caracteristicas", label: "Cómo funciona" },
 ];
 
 const Navbar = () => {
@@ -39,22 +44,40 @@ const Navbar = () => {
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((l) => (
-            <NavLink
-              key={l.to}
-              to={l.to}
-              className={({ isActive }) =>
-                `text-sm font-medium transition-colors hover:text-primary ${
-                  isActive ? "text-primary" : "text-foreground"
-                }`
-              }
-            >
-              {l.label}
-            </NavLink>
-          ))}
+          {navLinks.map((l) =>
+            l.to ? (
+              <NavLink
+                key={l.to}
+                to={l.to}
+                className={({ isActive }) =>
+                  `text-sm font-medium transition-colors hover:text-primary ${
+                    isActive ? "text-primary" : "text-foreground"
+                  }`
+                }
+              >
+                {l.label}
+              </NavLink>
+            ) : (
+              <a
+                key={l.href}
+                href={l.href}
+                className="text-sm font-medium text-foreground transition-colors hover:text-primary"
+              >
+                {l.label}
+              </a>
+            )
+          )}
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
+          <a
+            href="https://agenda.edalti.com/login"
+            target="_blank"
+            rel="noreferrer"
+            className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+          >
+            Ingresar
+          </a>
           <Link
             to="/precios"
             className="text-sm font-medium text-foreground hover:text-primary transition-colors"
@@ -85,20 +108,40 @@ const Navbar = () => {
       {open && (
         <div className="md:hidden bg-background border-t border-border animate-fade-in">
           <nav className="container-edalti py-6 flex flex-col gap-1">
-            {navLinks.map((l) => (
-              <NavLink
-                key={l.to}
-                to={l.to}
-                onClick={() => setOpen(false)}
-                className={({ isActive }) =>
-                  `py-3 px-3 rounded-lg text-base font-medium transition-colors ${
-                    isActive ? "bg-secondary text-primary" : "text-foreground hover:bg-secondary"
-                  }`
-                }
-              >
-                {l.label}
-              </NavLink>
-            ))}
+            {navLinks.map((l) =>
+              l.to ? (
+                <NavLink
+                  key={l.to}
+                  to={l.to}
+                  onClick={() => setOpen(false)}
+                  className={({ isActive }) =>
+                    `py-3 px-3 rounded-lg text-base font-medium transition-colors ${
+                      isActive ? "bg-secondary text-primary" : "text-foreground hover:bg-secondary"
+                    }`
+                  }
+                >
+                  {l.label}
+                </NavLink>
+              ) : (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  className="py-3 px-3 rounded-lg text-base font-medium text-foreground hover:bg-secondary transition-colors"
+                >
+                  {l.label}
+                </a>
+              )
+            )}
+            <a
+              href="https://agenda.edalti.com/login"
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => setOpen(false)}
+              className="py-3 px-3 rounded-lg text-base font-medium text-foreground hover:bg-secondary transition-colors"
+            >
+              Ingresar
+            </a>
             <a
               href="https://wa.me/573000000000?text=Hola%20Edalti%2C%20quiero%20una%20demo"
               target="_blank"
