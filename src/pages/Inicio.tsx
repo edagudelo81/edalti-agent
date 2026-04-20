@@ -8,10 +8,10 @@ import SiteLayout from "@/components/site/SiteLayout";
 import WhatsAppMockup from "@/components/site/WhatsAppMockup";
 
 const stats = [
-  { value: "92%", label: "automatizado" },
-  { value: "100%", label: "atendido" },
-  { value: "48h", label: "Activo en 48 horas" },
-  { value: "0", label: "Sin conocimientos técnicos" },
+  { value: "100%", label: "de pacientes atendidos" },
+  { value: "24/7", label: "sin interrupciones" },
+  { value: "48h", label: "para estar activo" },
+  { value: "0", label: "conocimientos técnicos" },
 ];
 
 const problems = [
@@ -99,7 +99,7 @@ const testimonials = [
   {
     quote: "Lo conectamos un viernes. El sábado teníamos 14 citas agendadas sin que nadie en el equipo levantara un dedo.",
     name: "Andrés Gómez",
-    role: "Gerente, Auto Estética Medellín",
+    role: "Gerente, Centro Estético Lumina · Medellín",
   },
   {
     quote: "Recuperamos 12 horas a la semana del equipo. Ahora se enfocan en atender, no en agendar.",
