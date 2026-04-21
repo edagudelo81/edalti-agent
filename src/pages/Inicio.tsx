@@ -394,7 +394,7 @@ const Inicio = () => {
                 Cada minuto sin responder es dinero que se pierde.
               </h2>
               <p className="mt-5 text-primary-foreground/90 text-lg max-w-xl mx-auto">
-                Activa tu agente IA en menos de una semana y empieza a llenar tu agenda.
+                Activa tu agente IA en 48 horas y empieza a llenar tu agenda.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
                 <a
