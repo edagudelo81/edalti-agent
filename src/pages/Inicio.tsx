@@ -11,7 +11,7 @@ const stats = [
   { value: "100%", label: "de pacientes atendidos" },
   { value: "24/7", label: "sin interrupciones" },
   { value: "48h", label: "para estar activo" },
-  { value: "0", label: "conocimientos técnicos" },
+  { value: "+40%", label: "menos ausentismo" },
 ];
 
 const problems = [
@@ -46,7 +46,7 @@ const features = [
   {
     icon: BellRing,
     title: "Recordatorios automáticos",
-    desc: "Confirma asistencia y reduce los 'no-shows' hasta en un 85% con mensajes inteligentes.",
+    desc: "Confirma asistencia y reduce el ausentismo hasta un 40% con recordatorios automáticos por WhatsApp.",
   },
   {
     icon: Clock,
@@ -79,7 +79,7 @@ const steps = [
   {
     n: "03",
     title: "Empieza a vender mientras duermes",
-    desc: "Tu agente atiende, agenda y recuerda citas automáticamente desde el día 1.",
+    desc: "Tu agente atiende, agenda y recuerda citas automáticamente. Activo en 48 horas.",
   },
 ];
 
