@@ -26,6 +26,9 @@
     --accent: 190 100% 48%;              /* #00CBF4 */
     --accent-foreground: 224 50% 8%;
 
+    --success: 151 66% 42%;
+    --success-foreground: 0 0% 100%;
+
     --secondary: 226 100% 97%;           /* #F4F7FF */
     --secondary-foreground: 224 50% 8%;
 
