@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import SiteLayout from "@/components/site/SiteLayout";
+import DemoSplitView from "@/components/site/DemoSplitView";
 import WhatsAppMockup from "@/components/site/WhatsAppMockup";
 
 const stats = [
@@ -138,7 +139,7 @@ const faqs = [
   },
   {
     q: "¿Cuánto tiempo toma implementarlo?",
-    a: "Entre 3 y 7 días hábiles dependiendo de la complejidad. Incluye configuración, entrenamiento del agente y pruebas.",
+    a: "48 horas hábiles desde que confirmamos los detalles de tu negocio. Incluye configuración completa, entrenamiento del agente y pruebas — nosotros nos encargamos de todo.",
   },
   {
     q: "¿Necesito tener WhatsApp Business?",
@@ -253,6 +254,8 @@ const Inicio = () => {
           </div>
         </div>
       </section>
+
+      <DemoSplitView />
 
       {/* FEATURES */}
       <section id="caracteristicas" className="py-20 lg:py-28 bg-secondary">
