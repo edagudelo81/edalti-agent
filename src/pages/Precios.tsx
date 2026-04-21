@@ -6,18 +6,24 @@ import SiteLayout from "@/components/site/SiteLayout";
 type Plan = {
   name: string;
   tagline: string;
-  price: number;
+  monthlyPrice: number;
+  annualMonthlyPrice: number;
+  annualTotal: number;
   highlight?: boolean;
   features: string[];
   cta: string;
   ctaHref: string;
 };
 
+type Billing = "monthly" | "annual";
+
 const plans: Plan[] = [
   {
     name: "Esencial",
     tagline: "Para negocios pequeños empezando con automatización",
-    price: 149000,
+    monthlyPrice: 149000,
+    annualMonthlyPrice: 119000,
+    annualTotal: 1428000,
     features: [
       "1 agente IA en WhatsApp",
       "Hasta 500 conversaciones/mes",
@@ -32,7 +38,9 @@ const plans: Plan[] = [
   {
     name: "Profesional",
     tagline: "Lo más elegido por PyMEs en crecimiento",
-    price: 349000,
+    monthlyPrice: 349000,
+    annualMonthlyPrice: 279000,
+    annualTotal: 3348000,
     highlight: true,
     features: [
       "1 agente IA personalizado",
@@ -50,7 +58,9 @@ const plans: Plan[] = [
   {
     name: "Empresarial",
     tagline: "Para empresas con alto volumen y múltiples sedes",
-    price: 799000,
+    monthlyPrice: 799000,
+    annualMonthlyPrice: 639000,
+    annualTotal: 7668000,
     features: [
       "Agentes IA ilimitados",
       "Conversaciones ilimitadas",
@@ -101,6 +111,8 @@ const faqs = [
 
 const Precios = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [billing, setBilling] = useState<Billing>("monthly");
+  const isAnnual = billing === "annual";
 
   return (
     <SiteLayout>
@@ -123,6 +135,29 @@ const Precios = () => {
 
       {/* PLANS */}
       <section className="pb-20 lg:pb-28">
+        <div className="container-edalti mb-10 flex flex-col items-center gap-3">
+          <div className="inline-flex rounded-2xl bg-secondary p-1 border border-border">
+            {(["monthly", "annual"] as Billing[]).map((option) => (
+              <button
+                key={option}
+                type="button"
+                onClick={() => setBilling(option)}
+                className={`rounded-xl px-5 py-2.5 text-sm font-semibold transition-all ${
+                  billing === option
+                    ? "bg-primary text-primary-foreground shadow-md"
+                    : "text-foreground hover:text-primary"
+                }`}
+              >
+                {option === "monthly" ? "Mensual" : "Anual"}
+              </button>
+            ))}
+          </div>
+          {isAnnual && (
+            <span className="rounded-full bg-success px-3 py-1 text-xs font-bold text-success-foreground animate-fade-in">
+              Ahorra hasta 20%
+            </span>
+          )}
+        </div>
         <div className="container-edalti grid md:grid-cols-3 gap-5 lg:gap-6">
           {plans.map((p) => (
             <div
@@ -149,12 +184,17 @@ const Precios = () => {
               <div className="mt-6">
                 <div className="flex items-baseline gap-1">
                   <span className="text-4xl lg:text-5xl font-bold tracking-tight">
-                    {formatCOP(p.price)}
+                    {formatCOP(isAnnual ? p.annualMonthlyPrice : p.monthlyPrice)}
                   </span>
                 </div>
                 <span className={`text-sm ${p.highlight ? "text-background/60" : "text-muted-foreground"}`}>
                   COP / mes + IVA
                 </span>
+                {isAnnual && (
+                  <p className={`mt-2 text-sm ${p.highlight ? "text-background/70" : "text-muted-foreground"}`}>
+                    facturado como {formatCOP(p.annualTotal)} COP/año
+                  </p>
+                )}
               </div>
               <a
                 href={p.ctaHref}
@@ -186,6 +226,11 @@ const Precios = () => {
             </div>
           ))}
         </div>
+        {isAnnual && (
+          <p className="container-edalti mt-6 text-center text-sm font-semibold text-primary animate-fade-in">
+            Ahorra hasta $1.920.000 COP al año con el plan Empresarial anual.
+          </p>
+        )}
 
         {/* Included in all */}
         <div className="container-edalti mt-16">

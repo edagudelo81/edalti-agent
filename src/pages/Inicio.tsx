@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import {
   MessageCircle, Calendar, Clock, Bot, BellRing, Users, ShieldCheck,
   ArrowRight, Sparkles, Check, ChevronDown, MailQuestion, PhoneCall, CalendarX,
+  Stethoscope, Smile, Scissors,
 } from "lucide-react";
 import { useState } from "react";
 import SiteLayout from "@/components/site/SiteLayout";
@@ -84,32 +85,48 @@ const steps = [
 ];
 
 const industries = [
-  "Consultorios médicos",
-  "Centros de estética y spa",
-  "Clínicas dentales",
-  "Salones y barberías",
+  {
+    icon: Stethoscope,
+    title: "Consultorios médicos",
+    desc: "Tu consultorio siempre lleno, sin una llamada de confirmación de tu parte.",
+  },
+  {
+    icon: Sparkles,
+    title: "Centros de estética y spa",
+    desc: "Un agente que conoce cada servicio, cada profesional y cada horario disponible.",
+  },
+  {
+    icon: Smile,
+    title: "Clínicas dentales",
+    desc: "Recordatorios con instrucciones de preparación. Lista de espera automática.",
+  },
+  {
+    icon: Scissors,
+    title: "Salones y barberías",
+    desc: "Agenda digital en WhatsApp. Sin papel, sin llamadas, sin errores.",
+  },
 ];
 
 const testimonials = [
   {
-    quote: "Pasamos de perder 30% de citas por no responder a tiempo, a tener la agenda llena. El agente trabaja mejor que un recepcionista.",
-    name: "María Camila R.",
-    role: "Dueña, Clínica Dental Bogotá",
-    initials: "MC",
+    quote: "Redujimos el ausentismo un 38% en los primeros 3 meses. Los pacientes ahora llegan porque el bot los recuerda.",
+    name: "Dra. Juliana Ríos",
+    role: "Directora Médica · Clínica Vida Plena, Cali",
+    initials: "JR",
     avatarClass: "bg-primary text-primary-foreground",
   },
   {
-    quote: "Lo conectamos un viernes. El sábado teníamos 14 citas agendadas sin que nadie en el equipo levantara un dedo.",
-    name: "Andrés Gómez",
-    role: "Gerente, Centro Estético Lumina · Medellín",
-    initials: "AG",
+    quote: "Antes perdíamos 8-10 citas semanales por WhatsApp sin responder. Ahora el bot trabaja mientras nosotros dormimos.",
+    name: "Carlos Mejía",
+    role: "Dueño · Centro Estético Lumina, Medellín",
+    initials: "CM",
     avatarClass: "bg-accent text-primary-foreground",
   },
   {
-    quote: "Recuperamos 12 horas a la semana del equipo. Ahora se enfocan en atender, no en agendar.",
-    name: "Laura Pinzón",
-    role: "Spa Wellness, Cali",
-    initials: "LP",
+    quote: "La configuración fue en 48 horas como prometieron. Mis pacientes ni saben que hablan con un bot.",
+    name: "Dra. Camila Torres",
+    role: "Odontóloga · Sonrisa Dental, Bogotá",
+    initials: "CT",
     avatarClass: "bg-foreground text-primary-foreground",
   },
 ];
@@ -292,18 +309,25 @@ const Inicio = () => {
       </section>
 
       {/* INDUSTRIES */}
-      <section className="py-16 lg:py-20 bg-secondary">
-        <div className="container-edalti text-center">
+      <section className="py-16 lg:py-20 bg-background">
+        <div className="container-edalti">
+          <div className="max-w-2xl mx-auto text-center">
           <span className="text-sm font-semibold text-primary uppercase tracking-wider">Para tu industria</span>
-          <h2 className="mt-3 text-2xl lg:text-3xl font-bold">Diseñado para negocios que viven de citas</h2>
-          <div className="mt-10 flex flex-wrap justify-center gap-3">
-            {industries.map((i) => (
-              <span
-                key={i}
-                className="bg-background border border-border text-sm font-medium px-4 py-2.5 rounded-full text-foreground hover:border-primary/40 transition-colors"
+            <h2 className="mt-3 text-3xl lg:text-4xl font-bold leading-tight">Diseñado para tu tipo de negocio</h2>
+            <p className="mt-4 text-body">
+              Cada sector tiene sus propios dolores. Nuestro agente se configura para cada uno.
+            </p>
+          </div>
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {industries.map((industry) => (
+              <article
+                key={industry.title}
+                className="bg-background border border-border rounded-2xl p-7 shadow-card hover:border-primary transition-colors"
               >
-                {i}
-              </span>
+                <industry.icon className="h-10 w-10 text-primary" />
+                <h3 className="mt-6 text-lg font-bold">{industry.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-body">{industry.desc}</p>
+              </article>
             ))}
           </div>
         </div>
@@ -315,7 +339,7 @@ const Inicio = () => {
           <div className="max-w-2xl">
             <span className="text-sm font-semibold text-primary uppercase tracking-wider">Casos reales</span>
             <h2 className="mt-3 text-3xl lg:text-4xl font-bold leading-tight">
-              Negocios colombianos que ya están vendiendo en piloto automático.
+              Negocios como el tuyo ya usan Edalti
             </h2>
           </div>
           <div className="mt-12 grid md:grid-cols-3 gap-5">
