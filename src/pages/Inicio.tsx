@@ -95,16 +95,22 @@ const testimonials = [
     quote: "Pasamos de perder 30% de citas por no responder a tiempo, a tener la agenda llena. El agente trabaja mejor que un recepcionista.",
     name: "María Camila R.",
     role: "Dueña, Clínica Dental Bogotá",
+    initials: "MC",
+    avatarClass: "bg-primary text-primary-foreground",
   },
   {
     quote: "Lo conectamos un viernes. El sábado teníamos 14 citas agendadas sin que nadie en el equipo levantara un dedo.",
     name: "Andrés Gómez",
     role: "Gerente, Centro Estético Lumina · Medellín",
+    initials: "AG",
+    avatarClass: "bg-accent text-primary-foreground",
   },
   {
     quote: "Recuperamos 12 horas a la semana del equipo. Ahora se enfocan en atender, no en agendar.",
     name: "Laura Pinzón",
     role: "Spa Wellness, Cali",
+    initials: "LP",
+    avatarClass: "bg-foreground text-primary-foreground",
   },
 ];
 
@@ -118,8 +124,8 @@ const faqs = [
     a: "Entre 3 y 7 días hábiles dependiendo de la complejidad. Incluye configuración, entrenamiento del agente y pruebas.",
   },
   {
-    q: "¿El agente puede atender en otros idiomas?",
-    a: "Sí, el agente entiende español, inglés y otros idiomas. Puedes definir el idioma principal según tu mercado.",
+    q: "¿Necesito tener WhatsApp Business?",
+    a: "Si ya tienes WhatsApp Business, conectamos tu número actual sin que tus pacientes noten el cambio. Si aún usas WhatsApp personal, te ayudamos a migrar — es gratis y toma menos de 10 minutos.",
   },
   {
     q: "¿Qué pasa si un cliente quiere hablar con una persona?",
@@ -176,7 +182,7 @@ const Inicio = () => {
                 <Check className="h-4 w-4 text-primary" /> Sin tarjeta de crédito
               </span>
               <span className="inline-flex items-center gap-2">
-                <Check className="h-4 w-4 text-primary" /> Implementación en 7 días
+                <Check className="h-4 w-4 text-primary" /> Activo en 48 horas
               </span>
               <span className="inline-flex items-center gap-2">
                 <Check className="h-4 w-4 text-primary" /> Soporte en español
@@ -266,7 +272,7 @@ const Inicio = () => {
           <div className="max-w-2xl mx-auto text-center">
             <span className="text-sm font-semibold text-primary uppercase tracking-wider">Cómo funciona</span>
             <h2 className="mt-3 text-3xl lg:text-4xl font-bold">Listo en 3 pasos simples</h2>
-            <p className="mt-4 text-body">De cero a agente funcionando en menos de una semana.</p>
+            <p className="mt-4 text-body">De cero a agente funcionando en 48 horas.</p>
           </div>
           <div className="mt-14 grid md:grid-cols-3 gap-6 lg:gap-8">
             {steps.map((s, i) => (
@@ -319,9 +325,14 @@ const Inicio = () => {
                 className="bg-background rounded-2xl p-7 border border-border shadow-card flex flex-col"
               >
                 <blockquote className="text-body leading-relaxed flex-1">"{t.quote}"</blockquote>
-                <figcaption className="mt-6 pt-6 border-t border-border">
-                  <div className="font-semibold text-foreground">{t.name}</div>
-                  <div className="text-sm text-muted-foreground">{t.role}</div>
+                <figcaption className="mt-6 pt-6 border-t border-border flex items-center gap-3">
+                  <div className={`h-10 w-10 rounded-full flex shrink-0 items-center justify-center text-sm font-bold ${t.avatarClass}`}>
+                    {t.initials}
+                  </div>
+                  <div>
+                    <div className="font-semibold text-foreground">{t.name}</div>
+                    <div className="text-sm text-muted-foreground">{t.role}</div>
+                  </div>
                 </figcaption>
               </figure>
             ))}
