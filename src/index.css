@@ -29,6 +29,10 @@
     --success: 151 66% 42%;
     --success-foreground: 0 0% 100%;
 
+    --whatsapp-header: 174 86% 20%;
+    --whatsapp-chat: 41 30% 90%;
+    --whatsapp-bubble: 102 71% 87%;
+
     --secondary: 226 100% 97%;           /* #F4F7FF */
     --secondary-foreground: 224 50% 8%;
 
@@ -130,5 +134,28 @@
   }
   .animate-pulse-soft {
     animation: pulse-soft 2.4s ease-in-out infinite;
+  }
+  @keyframes demo-message-in {
+    from { opacity: 0; transform: translateY(14px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes demo-appointment-in {
+    0% { opacity: 0; transform: translateY(-18px); box-shadow: 0 0 0 0 hsl(var(--primary) / 0.35); }
+    45% { opacity: 1; transform: translateY(0); box-shadow: 0 0 0 8px hsl(var(--primary) / 0.14); }
+    100% { opacity: 1; transform: translateY(0); box-shadow: 0 0 0 0 hsl(var(--primary) / 0); }
+  }
+  @keyframes demo-notification {
+    0% { opacity: 0; transform: translateY(-14px); }
+    15%, 72% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-8px); }
+  }
+  .animate-demo-message {
+    animation: demo-message-in 0.38s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .animate-demo-appointment {
+    animation: demo-appointment-in 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .animate-demo-notification {
+    animation: demo-notification 2.5s ease both;
   }
 }
