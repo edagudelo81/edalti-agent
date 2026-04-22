@@ -33,7 +33,7 @@ const plans: Plan[] = [
       "Soporte por email",
     ],
     cta: "Empezar con Esencial",
-    ctaHref: "https://wa.me/573000000000?text=Hola%20Edalti%2C%20quiero%20el%20plan%20Esencial",
+    ctaHref: "https://cal.com/edalti-solution/30min",
   },
   {
     name: "Profesional",
@@ -53,7 +53,7 @@ const plans: Plan[] = [
       "Soporte prioritario por WhatsApp",
     ],
     cta: "Empezar con Profesional",
-    ctaHref: "https://wa.me/573000000000?text=Hola%20Edalti%2C%20quiero%20el%20plan%20Profesional",
+    ctaHref: "https://cal.com/edalti-solution/30min",
   },
   {
     name: "Empresarial",
@@ -72,7 +72,7 @@ const plans: Plan[] = [
       "Soporte 24/7 con SLA",
     ],
     cta: "Hablar con ventas",
-    ctaHref: "https://wa.me/573000000000?text=Hola%20Edalti%2C%20me%20interesa%20el%20plan%20Empresarial",
+    ctaHref: "https://cal.com/edalti-solution/30min",
   },
 ];
 
@@ -298,7 +298,7 @@ const Precios = () => {
           </p>
           <div className="mt-7 flex flex-col sm:flex-row gap-3 justify-center">
             <a
-              href="https://wa.me/573000000000?text=Hola%20Edalti%2C%20quiero%20una%20demo"
+              href="https://cal.com/edalti-solution/30min"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-primary-foreground font-semibold px-6 py-3.5 rounded-xl shadow-md transition-all"
