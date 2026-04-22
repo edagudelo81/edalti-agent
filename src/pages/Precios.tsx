@@ -53,7 +53,7 @@ const plans: Plan[] = [
       "Soporte prioritario por WhatsApp",
     ],
     cta: "Empezar con Profesional",
-    ctaHref: "https://wa.me/573000000000?text=Hola%20Edalti%2C%20quiero%20el%20plan%20Profesional",
+    ctaHref: "https://cal.com/edalti-solution/30min",
   },
   {
     name: "Empresarial",
