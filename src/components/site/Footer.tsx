@@ -49,7 +49,7 @@ const Footer = () => {
           <ul className="space-y-3 text-sm text-background/70">
             <li>
               <a
-                href="https://wa.me/573000000000"
+                href="https://cal.com/edalti-solution/30min"
                 target="_blank"
                 rel="noreferrer"
                 className="hover:text-accent transition-colors"
