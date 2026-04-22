@@ -72,7 +72,7 @@ const plans: Plan[] = [
       "Soporte 24/7 con SLA",
     ],
     cta: "Hablar con ventas",
-    ctaHref: "https://wa.me/573000000000?text=Hola%20Edalti%2C%20me%20interesa%20el%20plan%20Empresarial",
+    ctaHref: "https://cal.com/edalti-solution/30min",
   },
 ];
 
