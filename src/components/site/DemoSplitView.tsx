@@ -130,7 +130,7 @@ const DemoSplitView = () => {
         </div>
 
         <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
-          <a href="https://wa.me/573000000000?text=Hola%20Edalti%2C%20quiero%20un%20agente%20as%C3%AD" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-7 py-4 font-semibold text-primary-foreground shadow-md transition-all hover:bg-primary-hover hover:shadow-lg">
+          <a href="https://cal.com/edalti-solution/30min" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-7 py-4 font-semibold text-primary-foreground shadow-md transition-all hover:bg-primary-hover hover:shadow-lg">
             <MessageCircle className="h-5 w-5" />
             Quiero un agente así
             <ArrowRight className="h-4 w-4" />
