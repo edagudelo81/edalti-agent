@@ -33,7 +33,7 @@ const plans: Plan[] = [
       "Soporte por email",
     ],
     cta: "Empezar con Esencial",
-    ctaHref: "https://wa.me/573000000000?text=Hola%20Edalti%2C%20quiero%20el%20plan%20Esencial",
+    ctaHref: "https://cal.com/edalti-solution/30min",
   },
   {
     name: "Profesional",
