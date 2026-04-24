@@ -179,7 +179,7 @@ const Inicio = () => {
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
               <a
-                href="https://wa.me/573000000000?text=Hola%20Edalti%2C%20quiero%20una%20demo"
+                href="https://cal.com/edalti-solution/30min"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-primary-foreground font-semibold px-6 py-3.5 rounded-xl shadow-md hover:shadow-lg transition-all"
@@ -425,7 +425,7 @@ const Inicio = () => {
               </p>
               <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
                 <a
-                  href="https://wa.me/573000000000?text=Hola%20Edalti%2C%20quiero%20una%20demo"
+                  href="https://cal.com/edalti-solution/30min"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center justify-center gap-2 bg-background text-primary hover:bg-secondary font-semibold px-7 py-4 rounded-xl shadow-lg transition-all"
