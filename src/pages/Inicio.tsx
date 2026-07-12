@@ -348,27 +348,25 @@ const Inicio = () => {
               const inner = (
                 <>
                   <div className="flex items-center gap-3 md:flex-col md:gap-0">
-                    <div className="h-11 w-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                      <b.icon className="h-5 w-5 text-primary" />
+                    <div
+                      className="h-11 w-11 rounded-xl flex items-center justify-center shrink-0 shadow-sm"
+                      style={{ background: "var(--gradient-cta)" }}
+                    >
+                      <b.icon className="h-5 w-5 text-primary-foreground" />
                     </div>
                     <h3 className="font-bold text-foreground md:mt-4">{b.title}</h3>
                   </div>
                   <p className="mt-3 text-sm text-body leading-relaxed md:text-center">{b.desc}</p>
                 </>
               );
+              const cardClass =
+                "bg-background rounded-2xl p-6 border border-border shadow-card md:text-center hover:border-primary/30 hover:-translate-y-0.5 hover:shadow-md transition-all";
               return b.href ? (
-                <Link
-                  key={b.title}
-                  to={b.href}
-                  className="bg-background rounded-2xl p-6 border border-border shadow-card block md:text-center"
-                >
+                <Link key={b.title} to={b.href} className={`${cardClass} block`}>
                   {inner}
                 </Link>
               ) : (
-                <div
-                  key={b.title}
-                  className="bg-background rounded-2xl p-6 border border-border shadow-card md:text-center"
-                >
+                <div key={b.title} className={cardClass}>
                   {inner}
                 </div>
               );
