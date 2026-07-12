@@ -10,10 +10,10 @@ import DemoSplitView from "@/components/site/DemoSplitView";
 import WhatsAppMockup from "@/components/site/WhatsAppMockup";
 
 const stats = [
-  { value: "100%", label: "de pacientes atendidos" },
+  { value: "100%", label: "de mensajes respondidos" },
   { value: "24/7", label: "sin interrupciones" },
   { value: "48h", label: "para estar activo" },
-  { value: "+40%", label: "menos ausentismo" },
+  { value: "Hasta 40%", label: "menos ausentismo" },
 ];
 
 const problems = [
@@ -58,7 +58,7 @@ const features = [
   {
     icon: Users,
     title: "AI + humano: lo mejor de los dos mundos",
-    desc: "El 92% de las citas se gestionan solas. Cuando el paciente lo necesita, el agente transfiere la conversación a tu equipo con todo el contexto ya visible — el humano continúa donde el AI paró, sin que el paciente tenga que repetir nada.",
+    desc: "9 de cada 10 citas se gestionan solas, sin intervención humana. Cuando el paciente lo necesita, el agente transfiere la conversación a tu equipo con todo el contexto ya visible — el humano continúa donde el AI paró, sin que el paciente tenga que repetir nada.",
   },
   {
     icon: ShieldCheck,
@@ -163,9 +163,11 @@ const Inicio = () => {
               <Sparkles className="h-3.5 w-3.5" />
               Nuevo • IA conversacional para PyMEs en Colombia
             </span>
-            <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight">
-              <span className="text-foreground">Tu agenda se llena sola.</span>
-              <span className="block mt-3 text-accent">
+            <h1 className="mt-6 leading-[1.05] tracking-tight">
+              <span className="block text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground">
+                Tu agenda se llena sola.
+              </span>
+              <span className="block mt-3 text-lg sm:text-xl lg:text-2xl font-semibold leading-snug text-muted-foreground">
                 Tu agente de IA responde, agenda y recuerda por WhatsApp, las 24 horas.
               </span>
             </h1>
