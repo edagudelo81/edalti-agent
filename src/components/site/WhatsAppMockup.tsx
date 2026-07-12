@@ -8,7 +8,7 @@ type Bubble = {
 
 const messages: Bubble[] = [
   { from: "user", text: "Hola, quisiera agendar una cita para mañana 🙏", time: "10:24" },
-  { from: "bot", text: "¡Hola! Soy el asistente de Clínica Sonrisa 😊\nTengo disponibilidad mañana a las 9:00, 11:30 o 3:00 pm. ¿Cuál prefieres?", time: "10:24" },
+  { from: "bot", text: "¡Hola! Soy el asistente de Clínica Demo Edalti 😊\nTengo disponibilidad mañana a las 9:00, 11:30 o 3:00 pm. ¿Cuál prefieres?", time: "10:24" },
   { from: "user", text: "11:30 está perfecto", time: "10:25" },
   { from: "bot", text: "✅ Listo, agendé tu cita para mañana 11:30 am.\nTe enviaré un recordatorio 1 hora antes.", time: "10:25" },
 ];
@@ -26,12 +26,14 @@ const WhatsAppMockup = () => {
       <div className="relative rounded-[2.5rem] bg-foreground p-3 shadow-lg">
         <div className="rounded-[2rem] overflow-hidden bg-[#ECE5DD]">
           {/* WhatsApp header */}
-          <div className="bg-[#075E54] text-white px-4 py-3 flex items-center gap-3">
-            <div className="h-9 w-9 rounded-full bg-white/20 flex items-center justify-center font-semibold text-sm">
-              CS
-            </div>
+          <div className="bg-[#075E54] text-white px-3 py-3 flex items-center gap-2">
+            <img
+              src="/Sofi-Avatar.png"
+              alt="Sofi"
+              className="h-9 w-9 shrink-0 rounded-full object-cover"
+            />
             <div className="flex-1 min-w-0">
-              <div className="text-sm font-semibold truncate">Clínica Sonrisa</div>
+              <div className="text-[13px] font-semibold leading-tight truncate">Clínica Demo Edalti</div>
               <div className="text-[11px] text-white/75">en línea</div>
             </div>
           </div>
