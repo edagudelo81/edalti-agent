@@ -79,7 +79,7 @@ const Navbar = () => {
             Ingresar
           </a>
           <a
-            href="https://wa.me/573000000000?text=Hola%20Edalti%2C%20quiero%20una%20demo%20del%20agente%20IA"
+            href="https://cal.com/edalti-solution/30min"
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-2 bg-primary hover:bg-primary-hover text-primary-foreground text-sm font-semibold px-4 py-2.5 rounded-lg shadow-md transition-all hover:shadow-lg"
@@ -137,7 +137,7 @@ const Navbar = () => {
               Ingresar
             </a>
             <a
-              href="https://wa.me/573000000000?text=Hola%20Edalti%2C%20quiero%20una%20demo"
+              href="https://cal.com/edalti-solution/30min"
               target="_blank"
               rel="noreferrer"
               onClick={() => setOpen(false)}

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, MapPin, MessageCircle } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -18,18 +18,10 @@ const Footer = () => {
           </p>
           <div className="mt-6 flex flex-col gap-2 text-sm text-background/70">
             <span className="inline-flex items-center gap-2">
-              <MapPin className="h-4 w-4" /> Colombia 🇨🇴
+              <MapPin className="h-4 w-4" /> Cali, Colombia 🇨🇴
             </span>
-            <a href="mailto:hola@edalti.com" className="inline-flex items-center gap-2 hover:text-accent transition-colors">
-              <Mail className="h-4 w-4" /> hola@edalti.com
-            </a>
-            <a
-              href="https://wa.me/573000000000"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 hover:text-accent transition-colors"
-            >
-              <MessageCircle className="h-4 w-4" /> WhatsApp directo
+            <a href="mailto:info@edalti.com" className="inline-flex items-center gap-2 hover:text-accent transition-colors">
+              <Mail className="h-4 w-4" /> info@edalti.com
             </a>
           </div>
         </div>
@@ -64,8 +56,8 @@ const Footer = () => {
         <div className="container-edalti py-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-background/60">
           <span>© {new Date().getFullYear()} Edalti Solutions. Todos los derechos reservados.</span>
           <div className="flex gap-5">
-            <a href="#" className="hover:text-accent transition-colors">Términos</a>
-            <a href="#" className="hover:text-accent transition-colors">Privacidad</a>
+            <Link to="/terminos" className="hover:text-accent transition-colors">Términos</Link>
+            <Link to="/privacidad" className="hover:text-accent transition-colors">Privacidad</Link>
           </div>
         </div>
       </div>

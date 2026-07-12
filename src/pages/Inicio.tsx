@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import {
   MessageCircle, Calendar, Clock, Bot, BellRing, Users, ShieldCheck,
   ArrowRight, Sparkles, Check, ChevronDown, MailQuestion, PhoneCall, CalendarX,
-  Stethoscope, Smile, Scissors,
+  Stethoscope, Smile, Scissors, BadgeCheck, MapPin,
 } from "lucide-react";
 import { useState } from "react";
 import SiteLayout from "@/components/site/SiteLayout";
@@ -108,27 +108,22 @@ const industries = [
   },
 ];
 
-const testimonials = [
+const trustBadges = [
   {
-    quote: "Redujimos el ausentismo un 38% en los primeros 3 meses. Los pacientes ahora llegan porque el bot los recuerda.",
-    name: "Dra. Juliana Ríos",
-    role: "Directora Médica · Clínica Vida Plena, Cali",
-    initials: "JR",
-    avatarClass: "bg-primary text-primary-foreground",
+    icon: BadgeCheck,
+    title: "Meta Tech Provider verificado",
+    desc: "Usamos la API oficial de WhatsApp Business. No somos un intermediario no autorizado.",
   },
   {
-    quote: "Antes perdíamos 8-10 citas semanales por WhatsApp sin responder. Ahora el bot trabaja mientras nosotros dormimos.",
-    name: "Carlos Mejía",
-    role: "Dueño · Centro Estético Lumina, Medellín",
-    initials: "CM",
-    avatarClass: "bg-accent text-primary-foreground",
+    icon: ShieldCheck,
+    title: "Cumplimiento Ley 1581",
+    desc: "Tratamos los datos de tus pacientes conforme a la ley colombiana de Habeas Data.",
+    href: "/privacidad",
   },
   {
-    quote: "La configuración fue en 48 horas como prometieron. Mis pacientes ni saben que hablan con un bot.",
-    name: "Dra. Camila Torres",
-    role: "Odontóloga · Sonrisa Dental, Bogotá",
-    initials: "CT",
-    avatarClass: "bg-foreground text-primary-foreground",
+    icon: MapPin,
+    title: "Hecho en Colombia",
+    desc: "Soporte en tu zona horaria, en español, que entiende la realidad de tu negocio.",
   },
 ];
 
@@ -336,33 +331,48 @@ const Inicio = () => {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
+      {/* TRUST */}
       <section className="py-20 lg:py-28">
         <div className="container-edalti">
-          <div className="max-w-2xl">
-            <span className="text-sm font-semibold text-primary uppercase tracking-wider">Casos reales</span>
-            <h2 className="mt-3 text-3xl lg:text-4xl font-bold leading-tight">
-              Negocios como el tuyo ya usan Edalti
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="text-2xl lg:text-4xl font-bold leading-tight">
+              Tecnología verificada por Meta, hecha en Colombia
             </h2>
+            <p className="mt-4 text-body">
+              Construido sobre la API oficial de WhatsApp Business, con los estándares de seguridad y privacidad
+              que tu negocio necesita.
+            </p>
           </div>
-          <div className="mt-12 grid md:grid-cols-3 gap-5">
-            {testimonials.map((t) => (
-              <figure
-                key={t.name}
-                className="bg-background rounded-2xl p-7 border border-border shadow-card flex flex-col"
-              >
-                <blockquote className="text-body leading-relaxed flex-1">"{t.quote}"</blockquote>
-                <figcaption className="mt-6 pt-6 border-t border-border flex items-center gap-3">
-                  <div className={`h-10 w-10 rounded-full flex shrink-0 items-center justify-center text-sm font-bold ${t.avatarClass}`}>
-                    {t.initials}
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
+            {trustBadges.map((b) => {
+              const inner = (
+                <>
+                  <div className="flex items-center gap-3 md:flex-col md:gap-0">
+                    <div className="h-11 w-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                      <b.icon className="h-5 w-5 text-primary" />
+                    </div>
+                    <h3 className="font-bold text-foreground md:mt-4">{b.title}</h3>
                   </div>
-                  <div>
-                    <div className="font-semibold text-foreground">{t.name}</div>
-                    <div className="text-sm text-muted-foreground">{t.role}</div>
-                  </div>
-                </figcaption>
-              </figure>
-            ))}
+                  <p className="mt-3 text-sm text-body leading-relaxed md:text-center">{b.desc}</p>
+                </>
+              );
+              return b.href ? (
+                <Link
+                  key={b.title}
+                  to={b.href}
+                  className="bg-background rounded-2xl p-6 border border-border shadow-card block md:text-center"
+                >
+                  {inner}
+                </Link>
+              ) : (
+                <div
+                  key={b.title}
+                  className="bg-background rounded-2xl p-6 border border-border shadow-card md:text-center"
+                >
+                  {inner}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
