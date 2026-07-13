@@ -65,27 +65,56 @@ const appointments = [
 
 const DemoSplitView = () => {
   const [cycle, setCycle] = useState(0);
+  const [started, setStarted] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
   const chatScrollRef = useRef<HTMLDivElement>(null);
 
+  // El guion arranca cuando la sección entra al viewport: hasta entonces las
+  // animaciones CSS están pausadas (ver clase en el grid) y el chat queda arriba.
   useEffect(() => {
-    const interval = window.setInterval(() => setCycle((current) => current + 1), CYCLE_DURATION_MS);
-    return () => window.clearInterval(interval);
+    const section = sectionRef.current;
+    if (!section) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStarted(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(section);
+    return () => observer.disconnect();
   }, []);
 
-  // Auto-scroll al último mensaje a medida que aparecen, sincronizado con los mismos
-  // offsets que usan las animaciones CSS de las burbujas.
   useEffect(() => {
-    const scrollDelays = [...demoConversation.map((m) => m.delay), TYPING_INDICATOR_DELAY];
-    const timeouts = scrollDelays.map((delay) =>
+    if (!started) return;
+    const interval = window.setInterval(() => setCycle((current) => current + 1), CYCLE_DURATION_MS);
+    return () => window.clearInterval(interval);
+  }, [started]);
+
+  // Auto-scroll gradual: al aparecer cada burbuja, desplaza solo lo necesario para
+  // revelarla (como WhatsApp en vivo), usando los mismos offsets que las animaciones
+  // CSS. Nunca salta al final de la conversación.
+  useEffect(() => {
+    if (!started) return;
+    const behavior: ScrollBehavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ? "auto"
+      : "smooth";
+    const timeouts = demoConversation.map((message, index) =>
       window.setTimeout(() => {
-        chatScrollRef.current?.scrollTo({ top: chatScrollRef.current.scrollHeight, behavior: "smooth" });
-      }, parseFloat(delay) * 1000)
+        const container = chatScrollRef.current;
+        const bubble = container?.querySelectorAll<HTMLElement>("[data-demo-message]")[index];
+        if (!container || !bubble) return;
+        const delta = bubble.getBoundingClientRect().bottom - container.getBoundingClientRect().bottom;
+        if (delta > 0) container.scrollBy({ top: delta + 12, behavior });
+      }, parseFloat(message.delay) * 1000)
     );
     return () => timeouts.forEach((id) => window.clearTimeout(id));
-  }, [cycle]);
+  }, [started, cycle]);
 
   return (
-    <section className="overflow-hidden bg-secondary py-20 lg:py-28">
+    <section ref={sectionRef} className="overflow-hidden bg-secondary py-16 lg:py-20">
       <div className="container-edalti">
         <div className="mx-auto max-w-3xl text-center">
           <span className="text-sm font-semibold uppercase tracking-wider text-primary">Demo en vivo</span>
@@ -95,8 +124,15 @@ const DemoSplitView = () => {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-[minmax(0,55fr)_minmax(0,45fr)] lg:items-stretch">
-          <div className="flex flex-col overflow-hidden rounded-2xl border border-border bg-background shadow-card lg:h-full">
+        {/* Hasta que la sección entra al viewport, todas las animaciones del demo quedan
+            pausadas en su primer keyframe (fill-mode: both), para que el guion arranque
+            desde cero frente al usuario. */}
+        <div
+          className={`mt-10 grid gap-6 lg:grid-cols-[minmax(0,55fr)_minmax(0,45fr)] ${
+            started ? "" : "[&_*]:![animation-play-state:paused]"
+          }`}
+        >
+          <div className="flex flex-col overflow-hidden rounded-2xl border border-border bg-background shadow-card lg:h-[520px]">
             <div className="flex shrink-0 items-center gap-3 bg-whatsapp-header px-5 py-4 text-primary-foreground">
               <img src="/Sofi-Avatar.png" alt="Sofi" className="h-10 w-10 shrink-0 rounded-full object-cover" />
               <div>
@@ -107,13 +143,14 @@ const DemoSplitView = () => {
             <div
               ref={chatScrollRef}
               key={`chat-${cycle}`}
-              className="h-[60vh] min-h-0 flex-1 space-y-3 overflow-y-auto bg-whatsapp-chat p-4 sm:p-6 lg:h-auto"
+              className="h-[60vh] max-h-[480px] space-y-3 overflow-y-auto bg-whatsapp-chat p-4 sm:p-6 lg:h-auto lg:max-h-none lg:min-h-0 lg:flex-1"
             >
               {demoConversation.map((message) => {
                 const isPatient = message.from === "patient";
                 return (
                   <div
                     key={`${message.text}-${cycle}`}
+                    data-demo-message
                     className={`flex animate-demo-message ${isPatient ? "justify-end" : "justify-start"}`}
                     style={{ animationDelay: message.delay }}
                   >
@@ -142,7 +179,7 @@ const DemoSplitView = () => {
           </div>
 
           {/* Panel completo del negocio — solo desktop. En móvil, ver la card compacta debajo del chat. */}
-          <div className="relative hidden overflow-hidden rounded-2xl border border-border bg-background p-5 shadow-card lg:block sm:p-6">
+          <div className="relative hidden overflow-hidden rounded-2xl border border-border bg-background p-5 shadow-card sm:p-6 lg:flex lg:h-[520px] lg:flex-col">
             <div
               key={`notification-${cycle}`}
               className="absolute right-4 top-4 z-10 animate-demo-notification rounded-xl border border-border bg-background px-4 py-3 text-sm font-semibold text-foreground shadow-lg"
@@ -151,7 +188,7 @@ const DemoSplitView = () => {
               🔔 Nueva cita agendada por el agente IA
             </div>
 
-            <div key={`status-${cycle}`} className="space-y-2 border-b border-border pb-4 text-sm">
+            <div key={`status-${cycle}`} className="shrink-0 space-y-2 border-b border-border pb-3 text-sm">
               <p className="animate-demo-message flex items-center gap-2 font-medium text-foreground" style={{ animationDelay: "2.2s" }}>
                 <span className="h-2 w-2 rounded-full bg-success" /> Chat activo: Laura Gómez
               </p>
@@ -160,7 +197,7 @@ const DemoSplitView = () => {
               </p>
             </div>
 
-            <div className="flex flex-wrap items-start justify-between gap-4 pb-5 pt-5">
+            <div className="flex shrink-0 flex-wrap items-start justify-between gap-4 pb-4 pt-4">
               <div>
                 <div className="flex items-center gap-2">
                   <Calendar className="h-5 w-5 text-primary" />
@@ -171,7 +208,7 @@ const DemoSplitView = () => {
               <span className="rounded-full bg-success/10 px-3 py-1 text-xs font-bold text-success">● En vivo</span>
             </div>
 
-            <div key={`agenda-${cycle}`} className="mt-5 space-y-3">
+            <div key={`agenda-${cycle}`} className="mt-4 min-h-0 flex-1 space-y-3 overflow-y-auto pr-1 lg:mt-1">
               {appointments.slice(0, 2).map((appointment) => (
                 <AgendaRow key={appointment.time} {...appointment} />
               ))}
@@ -212,7 +249,7 @@ const DemoSplitView = () => {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
+        <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
           <a
             href="https://cal.com/edalti-solution/30min"
             target="_blank"
