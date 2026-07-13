@@ -194,7 +194,7 @@ const Inicio = () => {
             </div>
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-muted-foreground">
               <span className="inline-flex items-center gap-2">
-                <Check className="h-4 w-4 text-primary" /> Sin tarjeta de crédito
+                <Check className="h-4 w-4 text-primary" /> 15 días gratis, sin tarjeta
               </span>
               <span className="inline-flex items-center gap-2">
                 <Check className="h-4 w-4 text-primary" /> Activo en 48 horas
@@ -450,6 +450,9 @@ const Inicio = () => {
                   Ver precios
                 </Link>
               </div>
+              <p className="mt-4 inline-flex items-center justify-center gap-2 text-sm text-primary-foreground/80">
+                <Check className="h-4 w-4" /> Prueba 15 días gratis. Sin tarjeta de crédito.
+              </p>
             </div>
           </div>
         </div>
