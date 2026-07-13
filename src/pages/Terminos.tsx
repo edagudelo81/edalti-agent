@@ -16,7 +16,13 @@ const sections: LegalSection[] = [
     ],
   },
   {
-    title: "2. Uso aceptable",
+    title: "2. Periodo de prueba gratuita",
+    blocks: [
+      "Edalti ofrece un periodo de prueba gratuita de quince (15) días, sin necesidad de registrar medio de pago. Al finalizar el periodo, el acceso a las funcionalidades quedará sujeto a la contratación de un plan de suscripción. Edalti se reserva el derecho de modificar o dar por terminado el periodo de prueba en cualquier momento.",
+    ],
+  },
+  {
+    title: "3. Uso aceptable",
     blocks: [
       "Al utilizar Edalti, el usuario se compromete a:",
       {
@@ -32,7 +38,7 @@ const sections: LegalSection[] = [
     ],
   },
   {
-    title: "3. Responsabilidad del usuario y tratamiento de datos",
+    title: "4. Responsabilidad del usuario y tratamiento de datos",
     blocks: [
       "El usuario es el único responsable de:",
       {
@@ -58,7 +64,7 @@ const sections: LegalSection[] = [
     ],
   },
   {
-    title: "4. Integración con terceros",
+    title: "5. Integración con terceros",
     blocks: [
       "La plataforma Edalti utiliza servicios de terceros para su funcionamiento, incluyendo la API oficial de WhatsApp Business proporcionada por Meta Platforms, Inc.",
       "El usuario reconoce que el uso de WhatsApp está sujeto a los términos y políticas de Meta, y que Edalti actúa únicamente como intermediario tecnológico que facilita la comunicación entre empresas y sus clientes.",
@@ -66,7 +72,7 @@ const sections: LegalSection[] = [
     ],
   },
   {
-    title: "5. Limitación de responsabilidad",
+    title: "6. Limitación de responsabilidad",
     blocks: [
       "En la máxima medida permitida por la ley aplicable, Edalti no será responsable por:",
       {
@@ -81,7 +87,7 @@ const sections: LegalSection[] = [
     ],
   },
   {
-    title: "6. Terminación del servicio",
+    title: "7. Terminación del servicio",
     blocks: [
       "Edalti podrá suspender o cancelar el acceso del usuario a la plataforma en los siguientes casos:",
       {
@@ -96,14 +102,14 @@ const sections: LegalSection[] = [
     ],
   },
   {
-    title: "7. Modificaciones",
+    title: "8. Modificaciones",
     blocks: [
       "Edalti se reserva el derecho de modificar estos Términos y Condiciones en cualquier momento. Las modificaciones serán notificadas al usuario con al menos 15 días de antelación mediante correo electrónico o aviso en la plataforma.",
       "El uso continuado de la plataforma tras la entrada en vigor de los cambios implica la aceptación de los nuevos términos. Si el usuario no acepta las modificaciones, deberá cancelar su cuenta antes de la fecha de entrada en vigor.",
     ],
   },
   {
-    title: "8. Contacto",
+    title: "9. Contacto",
     blocks: [
       "Para cualquier consulta relacionada con estos Términos y Condiciones, puedes contactarnos en:",
       {
