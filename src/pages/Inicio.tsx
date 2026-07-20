@@ -12,8 +12,13 @@ import WhatsAppMockup from "@/components/site/WhatsAppMockup";
 const stats = [
   { value: "100%", label: "de mensajes respondidos" },
   { value: "24/7", label: "sin interrupciones" },
-  { value: "48h", label: "para estar activo" },
-  { value: "Hasta 40%", label: "menos ausentismo" },
+  { value: "9 de cada 10", label: "citas sin intervención humana" },
+  { value: "Hasta 40%", label: "menos ausentismo", note: "referencia de industria" },
+];
+
+const heroTrust = [
+  { icon: BadgeCheck, title: "API Oficial de WhatsApp Business" },
+  { icon: ShieldCheck, title: "Cumplimiento Ley 1581" },
 ];
 
 const problems = [
@@ -157,8 +162,9 @@ const Inicio = () => {
     <SiteLayout>
       {/* HERO */}
       <section className="relative bg-hero-gradient overflow-hidden">
-        <div className="container-edalti pt-12 pb-20 lg:pt-20 lg:pb-32 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div className="animate-fade-up">
+        <div className="container-edalti pt-12 pb-20 lg:pt-20 lg:pb-32 grid grid-cols-1 md:grid-cols-2 md:gap-x-16 md:items-center">
+          {/* Bloque superior: badge + titular + subtitular — siempre primero */}
+          <div className="animate-fade-up md:col-start-1 md:row-start-1">
             <span className="inline-flex items-center gap-2 bg-secondary text-primary text-xs font-semibold px-3 py-1.5 rounded-full">
               <Sparkles className="h-3.5 w-3.5" />
               Nuevo • IA conversacional para PyMEs en Colombia
@@ -171,7 +177,22 @@ const Inicio = () => {
                 Tu agente de IA responde, agenda y recuerda por WhatsApp, las 24 horas.
               </span>
             </h1>
-            <p className="mt-6 text-lg text-body leading-relaxed max-w-xl">
+            <p className="mt-4 text-base sm:text-lg font-semibold text-primary">
+              Sin formularios, sin apps, sin salir de WhatsApp: tu cliente agenda en el chat que ya usa.
+            </p>
+          </div>
+
+          {/* Mockup de Sofi — en móvil sube tras el subtitular; en desktop va en la columna derecha */}
+          <div
+            className="animate-fade-up mt-10 md:mt-0 md:col-start-2 md:row-start-1 md:row-span-2 md:self-center"
+            style={{ animationDelay: "0.15s" }}
+          >
+            <WhatsAppMockup />
+          </div>
+
+          {/* Bloque inferior: descripción, CTAs, franja y métricas */}
+          <div className="animate-fade-up mt-10 md:mt-4 md:col-start-1 md:row-start-2">
+            <p className="text-lg text-body leading-relaxed max-w-xl">
               Especializado para consultorios médicos, centros de estética, clínicas dentales y salones de belleza en Colombia. Sin conocimientos técnicos — nosotros configuramos todo en 48 horas.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
@@ -192,21 +213,16 @@ const Inicio = () => {
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
-            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-muted-foreground">
-              <span className="inline-flex items-center gap-2">
-                <Check className="h-4 w-4 text-primary" /> 15 días gratis, sin tarjeta
-              </span>
-              <span className="inline-flex items-center gap-2">
-                <Check className="h-4 w-4 text-primary" /> Activo en 48 horas
-              </span>
-              <span className="inline-flex items-center gap-2">
-                <Check className="h-4 w-4 text-primary" /> Soporte en español
-              </span>
-            </div>
-          </div>
 
-          <div className="animate-fade-up" style={{ animationDelay: "0.15s" }}>
-            <WhatsAppMockup />
+            {/* Franja de confianza compacta — solo los dos sellos de mayor impacto */}
+            <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-1.5 text-xs sm:text-sm text-muted-foreground">
+              {heroTrust.map((b) => (
+                <span key={b.title} className="inline-flex items-center gap-1.5">
+                  <b.icon className="h-3.5 w-3.5 text-primary shrink-0" />
+                  {b.title}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -217,6 +233,9 @@ const Inicio = () => {
               <div key={s.label} className="bg-background p-6 lg:p-8 text-center">
                 <div className="text-2xl lg:text-4xl font-bold text-primary">{s.value}</div>
                 <div className="mt-1 text-xs lg:text-sm text-muted-foreground">{s.label}</div>
+                {s.note && (
+                  <div className="mt-1 text-[10px] lg:text-[11px] text-muted-foreground/70">{s.note}</div>
+                )}
               </div>
             ))}
           </div>
