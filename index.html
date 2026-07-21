@@ -35,6 +35,20 @@
     gtag('js', new Date());
     gtag('config', 'G-HH6HM9DZFB', { send_page_view: false });
   </script>
+
+  <!-- En móvil, sube la burbuja de Chatwoot para que no choque con el sticky CTA -->
+  <style>
+    @media (max-width: 767px) {
+      .woot-widget-bubble,
+      .woot-widget-bubble.woot-elements--right,
+      .woot--bubble-holder {
+        bottom: 88px !important;
+      }
+      .woot-widget-holder {
+        bottom: 156px !important;
+      }
+    }
+  </style>
 </head>
 
   <body>

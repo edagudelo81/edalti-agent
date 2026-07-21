@@ -143,22 +143,34 @@ const trustBadges = [
   },
 ];
 
-const faqs = [
+type Faq = { q: string; a: string; href?: string; linkLabel?: string };
+
+const faqs: Faq[] = [
+  {
+    q: "¿Pueden bloquear o banear mi número de WhatsApp?",
+    a: "No: usamos la API oficial de WhatsApp Business a través de Meta Tech Provider verificado; las conversaciones las inician tus clientes, y cumplimos las políticas de calidad de Meta.",
+  },
   {
     q: "¿Funciona con mi número de WhatsApp actual?",
-    a: "Sí. Migramos tu número a la API oficial de WhatsApp Business sin que tus clientes noten el cambio. Conservas tu historial y contactos.",
+    a: "Sí. Usamos tu propio número de WhatsApp Business —es tuyo y sigue siéndolo—. Y si aún no tienes uno, te ayudamos a crearlo y configurarlo.",
+  },
+  {
+    q: "¿El agente puede equivocarse o inventar?",
+    a: "El agente consulta tus servicios, precios y disponibilidad reales. Si no sabe algo, lo dice y transfiere a una persona con todo el contexto.",
+  },
+  {
+    q: "¿Qué pasa con los datos de mis clientes y pacientes?",
+    a: "Cumplimos la Ley 1581 (Habeas Data), con distinción entre Responsable y Encargado del tratamiento.",
+    href: "/privacidad",
+    linkLabel: "Ver nuestra política de privacidad",
+  },
+  {
+    q: "¿Quedo atado a Edalti?",
+    a: "No. Usas tu propio número en tu cuenta de Meta y pagas las conversaciones directamente a Meta. Si algún día decides irte, te vas con tu número, sin permanencia ni lock-in.",
   },
   {
     q: "¿Cuánto tiempo toma implementarlo?",
     a: "48 horas hábiles desde que confirmamos los detalles de tu negocio. Incluye configuración completa, entrenamiento del agente y pruebas — nosotros nos encargamos de todo.",
-  },
-  {
-    q: "¿Necesito tener WhatsApp Business?",
-    a: "Si ya tienes WhatsApp Business, conectamos tu número actual sin que tus pacientes noten el cambio. Si aún usas WhatsApp personal, te ayudamos a migrar — es gratis y toma menos de 10 minutos.",
-  },
-  {
-    q: "¿Qué pasa si un cliente quiere hablar con una persona?",
-    a: "El agente detecta automáticamente cuándo escalar a un humano y transfiere la conversación a tu equipo sin fricciones.",
   },
   {
     q: "¿Necesito conocimientos técnicos?",
@@ -172,7 +184,7 @@ const Inicio = () => {
   return (
     <SiteLayout>
       {/* HERO */}
-      <section className="relative bg-hero-gradient overflow-hidden">
+      <section id="hero" className="relative bg-hero-gradient overflow-hidden">
         <div className="container-edalti pt-12 pb-20 lg:pt-20 lg:pb-32 grid grid-cols-1 md:grid-cols-2 md:gap-x-16 md:items-center">
           {/* Bloque superior: badge + titular + subtitular — siempre primero */}
           <div className="animate-fade-up md:col-start-1 md:row-start-1">
@@ -437,6 +449,17 @@ const Inicio = () => {
                 {openFaq === i && (
                   <div className="px-5 pb-5 text-body text-sm leading-relaxed animate-fade-in">
                     {f.a}
+                    {f.href && (
+                      <>
+                        {" "}
+                        <Link
+                          to={f.href}
+                          className="font-medium text-primary underline underline-offset-2 hover:text-primary-hover"
+                        >
+                          {f.linkLabel}
+                        </Link>
+                      </>
+                    )}
                   </div>
                 )}
               </div>
@@ -446,7 +469,7 @@ const Inicio = () => {
       </section>
 
       {/* FINAL CTA */}
-      <section className="py-20 lg:py-28">
+      <section id="cta-final" className="py-20 lg:py-28">
         <div className="container-edalti">
           <div
             className="rounded-3xl p-10 lg:p-16 text-center text-primary-foreground relative overflow-hidden"
