@@ -209,6 +209,13 @@ const Precios = () => {
                 <MessageCircle className="h-4 w-4" />
                 {p.cta}
               </a>
+              <p
+                className={`mt-3 text-center text-xs ${
+                  p.highlight ? "text-background/70" : "text-muted-foreground"
+                }`}
+              >
+                15 días de prueba gratuita. Sin tarjeta de crédito.
+              </p>
               <ul className="mt-8 space-y-3 flex-1">
                 {p.features.map((f) => (
                   <li key={f} className="flex items-start gap-3 text-sm">
@@ -232,8 +239,22 @@ const Precios = () => {
           </p>
         )}
 
+        {/* Nota de transparencia de precios */}
+        <div className="container-edalti mt-10">
+          <div className="mx-auto max-w-3xl rounded-2xl border border-border bg-secondary/60 p-5 text-center">
+            <p className="text-sm text-body leading-relaxed">
+              Nuestros planes en pesos colombianos. Las conversaciones de WhatsApp las pagas
+              directamente a Meta desde tu propia cuenta — tu número es tuyo, sin permanencia.
+            </p>
+            <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
+              A partir de octubre, Meta cobra por conversación en WhatsApp. Las conversaciones de
+              Sofi son cortas y de bajo costo.
+            </p>
+          </div>
+        </div>
+
         {/* Included in all */}
-        <div className="container-edalti mt-16">
+        <div className="container-edalti mt-12">
           <div className="bg-secondary rounded-3xl p-8 lg:p-10 border border-border">
             <div className="grid lg:grid-cols-3 gap-8 items-start">
               <div>

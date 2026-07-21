@@ -8,6 +8,7 @@ import { useState } from "react";
 import SiteLayout from "@/components/site/SiteLayout";
 import DemoSplitView from "@/components/site/DemoSplitView";
 import WhatsAppMockup from "@/components/site/WhatsAppMockup";
+import BeforeAfter from "@/components/site/BeforeAfter";
 
 const stats = [
   { value: "100%", label: "de mensajes respondidos" },
@@ -312,6 +313,9 @@ const Inicio = () => {
         </div>
       </section>
 
+      {/* BEFORE / AFTER */}
+      <BeforeAfter />
+
       {/* HOW IT WORKS */}
       <section className="py-20 lg:py-28">
         <div className="container-edalti">
@@ -480,7 +484,7 @@ const Inicio = () => {
                 </Link>
               </div>
               <p className="mt-4 inline-flex items-center justify-center gap-2 text-sm text-primary-foreground/80">
-                <Check className="h-4 w-4" /> Prueba 15 días gratis. Sin tarjeta de crédito.
+                <Check className="h-4 w-4" /> 15 días de prueba gratuita. Sin tarjeta de crédito.
               </p>
             </div>
           </div>
