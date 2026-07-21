@@ -117,7 +117,7 @@ const Precios = () => {
   return (
     <SiteLayout>
       {/* HERO */}
-      <section className="bg-hero-gradient">
+      <section id="hero" className="bg-hero-gradient">
         <div className="container-edalti pt-12 pb-12 lg:pt-20 lg:pb-16 text-center max-w-3xl mx-auto">
           <span className="inline-flex items-center gap-2 bg-secondary text-primary text-xs font-semibold px-3 py-1.5 rounded-full">
             <Sparkles className="h-3.5 w-3.5" />
@@ -311,7 +311,7 @@ const Precios = () => {
       </section>
 
       {/* FINAL CTA */}
-      <section className="py-16 lg:py-24">
+      <section id="cta-final" className="py-16 lg:py-24">
         <div className="container-edalti text-center max-w-2xl">
           <h2 className="text-3xl lg:text-4xl font-bold">¿Aún no estás seguro qué plan elegir?</h2>
           <p className="mt-4 text-body">
