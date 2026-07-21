@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import {
   MessageCircle, Calendar, Clock, Bot, BellRing, Users, ShieldCheck,
   ArrowRight, Sparkles, Check, ChevronDown, MailQuestion, PhoneCall, CalendarX,
-  Stethoscope, Smile, Scissors, BadgeCheck, MapPin,
+  Stethoscope, Smile, Scissors, BadgeCheck, MapPin, Hospital, FlaskConical,
 } from "lucide-react";
 import { useState } from "react";
 import SiteLayout from "@/components/site/SiteLayout";
@@ -92,6 +92,11 @@ const steps = [
 
 const industries = [
   {
+    icon: Hospital,
+    title: "Clínicas y centros médicos con varios especialistas",
+    desc: "Coordina las agendas de varios profesionales y sedes sin choques ni dobles reservas.",
+  },
+  {
     icon: Stethoscope,
     title: "Consultorios médicos",
     desc: "Tu consultorio siempre lleno, sin una llamada de confirmación de tu parte.",
@@ -110,6 +115,11 @@ const industries = [
     icon: Scissors,
     title: "Salones y barberías",
     desc: "Agenda digital en WhatsApp. Sin papel, sin llamadas, sin errores.",
+  },
+  {
+    icon: FlaskConical,
+    title: "Laboratorios y centros de exámenes",
+    desc: "Cada examen con su preparación previa —como el ayuno— explicada al paciente, sin confusiones.",
   },
 ];
 
@@ -337,7 +347,7 @@ const Inicio = () => {
               Cada sector tiene sus propios dolores. Nuestro agente se configura para cada uno.
             </p>
           </div>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {industries.map((industry) => (
               <article
                 key={industry.title}
