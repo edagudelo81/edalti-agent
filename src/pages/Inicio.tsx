@@ -9,6 +9,7 @@ import SiteLayout from "@/components/site/SiteLayout";
 import DemoSplitView from "@/components/site/DemoSplitView";
 import WhatsAppMockup from "@/components/site/WhatsAppMockup";
 import BeforeAfter from "@/components/site/BeforeAfter";
+import { trackEvent } from "@/lib/analytics";
 
 const stats = [
   { value: "100%", label: "de mensajes respondidos" },
@@ -223,6 +224,7 @@ const Inicio = () => {
                 href="https://cal.com/edalti-solution/30min"
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => trackEvent("calcom_click", { location: "hero" })}
                 className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-primary-foreground font-semibold px-6 py-3.5 rounded-xl shadow-md hover:shadow-lg transition-all"
               >
                 <MessageCircle className="h-5 w-5" />
@@ -494,6 +496,7 @@ const Inicio = () => {
                   href="https://cal.com/edalti-solution/30min"
                   target="_blank"
                   rel="noreferrer"
+                  onClick={() => trackEvent("calcom_click", { location: "final" })}
                   className="inline-flex items-center justify-center gap-2 bg-background text-primary hover:bg-secondary font-semibold px-7 py-4 rounded-xl shadow-lg transition-all"
                 >
                   <MessageCircle className="h-5 w-5" />

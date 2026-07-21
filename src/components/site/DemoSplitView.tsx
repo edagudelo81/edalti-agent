@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Check, MessageCircle } from "lucide-react";
+import { trackEvent, trackOnce } from "@/lib/analytics";
 
 // sender: 'patient' | 'bot'; delay = offset acumulado (s) para animationDelay; triggersPanel opcional
 const demoConversation = [
@@ -111,6 +112,7 @@ const DemoSplitView = () => {
       ([entry]) => {
         if (entry.isIntersecting) {
           setStarted(true);
+          trackOnce("scroll_demo_view");
           observer.disconnect();
         }
       },
@@ -288,6 +290,7 @@ const DemoSplitView = () => {
             href="https://cal.com/edalti-solution/30min"
             target="_blank"
             rel="noreferrer"
+            onClick={() => trackEvent("calcom_click", { location: "demo" })}
             className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-7 py-4 font-semibold text-primary-foreground shadow-md transition-all hover:bg-primary-hover hover:shadow-lg"
           >
             <MessageCircle className="h-5 w-5" />
@@ -299,6 +302,7 @@ const DemoSplitView = () => {
               href="https://wa.me/573226868840?text=Hola%20Sofi%2C%20quiero%20agendar%20una%20cita%20de%20prueba"
               target="_blank"
               rel="noreferrer"
+              onClick={() => trackEvent("demo_whatsapp_click", { location: "demo" })}
               className="inline-flex items-center justify-center gap-2 rounded-xl border border-primary px-7 py-4 font-semibold text-primary transition-all hover:bg-primary/5"
             >
               <MessageCircle className="h-5 w-5" />

@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { Check, MessageCircle, Sparkles, ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import SiteLayout from "@/components/site/SiteLayout";
+import { trackEvent, trackOnce } from "@/lib/analytics";
 
 type Plan = {
   name: string;
@@ -113,6 +114,24 @@ const Precios = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [billing, setBilling] = useState<Billing>("monthly");
   const isAnnual = billing === "annual";
+  const plansRef = useRef<HTMLElement>(null);
+
+  // scroll_pricing_view: se dispara una sola vez cuando la sección de precios entra al viewport.
+  useEffect(() => {
+    const el = plansRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          trackOnce("scroll_pricing_view");
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <SiteLayout>
@@ -134,7 +153,7 @@ const Precios = () => {
       </section>
 
       {/* PLANS */}
-      <section className="pb-20 lg:pb-28">
+      <section ref={plansRef} className="pb-20 lg:pb-28">
         <div className="container-edalti mb-10 flex flex-col items-center gap-3">
           <div className="inline-flex rounded-2xl bg-secondary p-1 border border-border">
             {(["monthly", "annual"] as Billing[]).map((option) => (
@@ -200,6 +219,7 @@ const Precios = () => {
                 href={p.ctaHref}
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => trackEvent("calcom_click", { location: "pricing" })}
                 className={`mt-7 inline-flex items-center justify-center gap-2 font-semibold px-5 py-3.5 rounded-xl transition-all ${
                   p.highlight
                     ? "bg-primary hover:bg-primary-hover text-primary-foreground shadow-md"
@@ -322,6 +342,7 @@ const Precios = () => {
               href="https://cal.com/edalti-solution/30min"
               target="_blank"
               rel="noreferrer"
+              onClick={() => trackEvent("calcom_click", { location: "pricing_final" })}
               className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-primary-foreground font-semibold px-6 py-3.5 rounded-xl shadow-md transition-all"
             >
               <MessageCircle className="h-5 w-5" />

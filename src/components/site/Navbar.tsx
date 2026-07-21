@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, X, MessageCircle } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 type NavItem =
   | { to: string; label: string; href?: undefined }
@@ -82,6 +83,7 @@ const Navbar = () => {
             href="https://cal.com/edalti-solution/30min"
             target="_blank"
             rel="noreferrer"
+            onClick={() => trackEvent("calcom_click", { location: "navbar" })}
             className="inline-flex items-center gap-2 bg-primary hover:bg-primary-hover text-primary-foreground text-sm font-semibold px-4 py-2.5 rounded-lg shadow-md transition-all hover:shadow-lg"
           >
             <MessageCircle className="h-4 w-4" />
@@ -140,7 +142,10 @@ const Navbar = () => {
               href="https://cal.com/edalti-solution/30min"
               target="_blank"
               rel="noreferrer"
-              onClick={() => setOpen(false)}
+              onClick={() => {
+                trackEvent("calcom_click", { location: "navbar" });
+                setOpen(false);
+              }}
               className="mt-3 inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground font-semibold px-4 py-3.5 rounded-lg shadow-md"
             >
               <MessageCircle className="h-5 w-5" />

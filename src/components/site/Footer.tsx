@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, MapPin } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 const Footer = () => {
   return (
@@ -44,6 +45,7 @@ const Footer = () => {
                 href="https://cal.com/edalti-solution/30min"
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => trackEvent("calcom_click", { location: "footer" })}
                 className="hover:text-accent transition-colors"
               >
                 Contacto

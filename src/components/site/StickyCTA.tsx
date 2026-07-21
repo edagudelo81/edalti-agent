@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { MessageCircle, CalendarClock } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 const WHATSAPP_URL = "https://wa.me/573226868840";
 const CAL_URL = "https://cal.com/edalti-solution/30min";
@@ -38,6 +39,7 @@ const StickyCTA = () => {
         href={WHATSAPP_URL}
         target="_blank"
         rel="noreferrer"
+        onClick={() => trackEvent("demo_whatsapp_click", { location: "sticky" })}
         className="flex-1 inline-flex items-center justify-center gap-2 min-h-[48px] bg-background text-foreground border border-border font-semibold px-3 rounded-xl shadow-lg active:scale-[0.98] transition-transform"
       >
         <MessageCircle className="h-5 w-5 text-primary shrink-0" />
@@ -47,6 +49,7 @@ const StickyCTA = () => {
         href={CAL_URL}
         target="_blank"
         rel="noreferrer"
+        onClick={() => trackEvent("calcom_click", { location: "sticky" })}
         className="flex-1 inline-flex items-center justify-center gap-2 min-h-[48px] bg-primary text-primary-foreground font-semibold px-3 rounded-xl shadow-lg active:scale-[0.98] transition-transform"
       >
         <CalendarClock className="h-5 w-5 shrink-0" />
