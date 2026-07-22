@@ -50,7 +50,6 @@ const plans: Plan[] = [
       "Hasta 3 calendarios / sedes",
       "Recordatorios + confirmaciones",
       "Reportes de rendimiento",
-      "Integración con Google Calendar / Calendly",
       "Soporte prioritario por WhatsApp",
     ],
     cta: "Empezar con Profesional",

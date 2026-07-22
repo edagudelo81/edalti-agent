@@ -14,12 +14,12 @@ const Footer = () => {
             <span className="font-bold text-lg">Edalti Solutions</span>
           </Link>
           <p className="mt-4 text-background/70 text-sm max-w-md leading-relaxed">
-            Automatización con IA para negocios colombianos.
+            Automatización con IA para negocios que viven de las citas.
             Agentes inteligentes que trabajan 24/7 por WhatsApp.
           </p>
           <div className="mt-6 flex flex-col gap-2 text-sm text-background/70">
             <span className="inline-flex items-center gap-2">
-              <MapPin className="h-4 w-4" /> Cali, Colombia 🇨🇴
+              <MapPin className="h-4 w-4" /> Cali, Colombia
             </span>
             <a href="mailto:info@edalti.com" className="inline-flex items-center gap-2 hover:text-accent transition-colors">
               <Mail className="h-4 w-4" /> info@edalti.com

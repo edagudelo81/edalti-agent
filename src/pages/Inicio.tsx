@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import {
   MessageCircle, Calendar, Clock, Bot, BellRing, Users, ShieldCheck,
   ArrowRight, Sparkles, Check, ChevronDown, MailQuestion, PhoneCall, CalendarX,
-  Stethoscope, Smile, Scissors, BadgeCheck, MapPin, Hospital, FlaskConical,
+  Stethoscope, Smile, Scissors, BadgeCheck, Headset, Hospital, FlaskConical,
 } from "lucide-react";
 import { useState } from "react";
 import SiteLayout from "@/components/site/SiteLayout";
@@ -50,12 +50,13 @@ const features = [
   {
     icon: Calendar,
     title: "Agenda en tiempo real",
-    desc: "Sincroniza con Google Calendar, Calendly y tus sistemas. Cero choques de horarios.",
+    desc: "Disponibilidad real por profesional, servicio y sede. Cero choques de horarios ni dobles reservas.",
   },
   {
     icon: BellRing,
     title: "Recordatorios automáticos",
     desc: "Confirma asistencia y reduce el ausentismo hasta un 40% con recordatorios automáticos por WhatsApp.",
+    note: "referencia de industria",
   },
   {
     icon: Clock,
@@ -138,9 +139,9 @@ const trustBadges = [
     href: "/privacidad",
   },
   {
-    icon: MapPin,
-    title: "Hecho en Colombia",
-    desc: "Soporte en tu zona horaria, en español, que entiende la realidad de tu negocio.",
+    icon: Headset,
+    title: "Soporte cercano",
+    desc: "Acompañamiento en tu zona horaria, con gente que entiende la realidad de tu negocio.",
   },
 ];
 
@@ -321,6 +322,9 @@ const Inicio = () => {
                 </div>
                 <h3 className="mt-5 text-lg font-bold">{f.title}</h3>
                 <p className="mt-2 text-sm text-body leading-relaxed">{f.desc}</p>
+                {f.note && (
+                  <div className="mt-1 text-[10px] lg:text-[11px] text-muted-foreground/70">{f.note}</div>
+                )}
               </div>
             ))}
           </div>
@@ -385,7 +389,7 @@ const Inicio = () => {
         <div className="container-edalti">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-2xl lg:text-4xl font-bold leading-tight">
-              Tecnología verificada por Meta, hecha en Colombia
+              Tecnología verificada por Meta, con los estándares que tu negocio necesita
             </h2>
             <p className="mt-4 text-body">
               Construido sobre la API oficial de WhatsApp Business, con los estándares de seguridad y privacidad
@@ -477,6 +481,16 @@ const Inicio = () => {
             className="rounded-3xl p-10 lg:p-16 text-center text-primary-foreground relative overflow-hidden"
             style={{ background: "var(--gradient-cta)" }}
           >
+            {/* Velo graduado: mantiene el azul vivo arriba-izquierda y oscurece hacia el
+                extremo cian, donde el texto pequeño no alcanzaba contraste AA. */}
+            <div
+              aria-hidden
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(135deg, hsl(var(--foreground) / 0.08) 0%, hsl(var(--foreground) / 0.55) 100%)",
+              }}
+            />
             <div aria-hidden className="absolute inset-0 opacity-20"
               style={{
                 backgroundImage:
@@ -485,10 +499,10 @@ const Inicio = () => {
               }}
             />
             <div className="relative">
-              <h2 className="text-3xl lg:text-5xl font-bold leading-tight max-w-3xl mx-auto">
+              <h2 className="text-3xl lg:text-5xl font-bold leading-tight max-w-3xl mx-auto text-primary-foreground">
                 Cada minuto sin responder es dinero que se pierde.
               </h2>
-              <p className="mt-5 text-primary-foreground/90 text-lg max-w-xl mx-auto">
+              <p className="mt-5 text-primary-foreground text-lg max-w-xl mx-auto">
                 Activa tu agente IA en 48 horas y empieza a llenar tu agenda.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
@@ -509,7 +523,7 @@ const Inicio = () => {
                   Ver precios
                 </Link>
               </div>
-              <p className="mt-4 inline-flex items-center justify-center gap-2 text-sm text-primary-foreground/80">
+              <p className="mt-4 inline-flex items-center justify-center gap-2 text-sm text-primary-foreground">
                 <Check className="h-4 w-4" /> 15 días de prueba gratuita. Sin tarjeta de crédito.
               </p>
             </div>
