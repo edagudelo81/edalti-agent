@@ -191,7 +191,7 @@ const Inicio = () => {
           <div className="animate-fade-up md:col-start-1 md:row-start-1">
             <span className="inline-flex items-center gap-2 bg-secondary text-primary text-xs font-semibold px-3 py-1.5 rounded-full">
               <Sparkles className="h-3.5 w-3.5" />
-              Nuevo • IA conversacional para PyMEs en Colombia
+              Nuevo • IA conversacional para PyMEs
             </span>
             <h1 className="mt-6 leading-[1.05] tracking-tight">
               <span className="block text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground">
@@ -217,7 +217,7 @@ const Inicio = () => {
           {/* Bloque inferior: descripción, CTAs, franja y métricas */}
           <div className="animate-fade-up mt-10 md:mt-4 md:col-start-1 md:row-start-2">
             <p className="text-lg text-body leading-relaxed max-w-xl">
-              Especializado para consultorios médicos, centros de estética, clínicas dentales y salones de belleza en Colombia. Sin conocimientos técnicos — nosotros configuramos todo en 48 horas.
+              Diseñado para clínicas, laboratorios, consultorios y centros de bienestar. Sin conocimientos técnicos — nosotros lo configuramos todo en 48 horas.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
               <a
